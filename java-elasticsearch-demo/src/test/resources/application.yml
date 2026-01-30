@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+logging:
+  level:
+    com.demo.search: INFO
+    org.springframework: WARN
+    org.hibernate: WARN

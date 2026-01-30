@@ -1,0 +1,274 @@
+{
+  "info": {
+    "name": "Elasticsearch Demo API",
+    "description": "Collection for testing Elasticsearch Demo endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sauvage Dior\",\n  \"description\": \"A fresh and powerful fragrance with notes of bergamot and pepper\",\n  \"price\": 2500000,\n  \"gender\": \"MALE\",\n  \"sillage\": \"STRONG\",\n  \"longevity\": \"LONG_LASTING\",\n  \"brand\": \"Dior\",\n  \"concentration\": \"EDT\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sauvage Elixir Dior\",\n  \"price\": 3500000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/products/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Basic Text Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/search?query=sauvage",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "sauvage"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Fuzzy Search (typo)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/search?query=sauvaje",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "sauvaje"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Price Range Filter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/search?minPrice=2000000&maxPrice=3000000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "minPrice",
+                  "value": "2000000"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "3000000"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Gender Filter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/search?gender=MALE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "gender",
+                  "value": "MALE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Combined Filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/search?query=dior&gender=MALE&minPrice=2000000&maxPrice=5000000&sillage=STRONG",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "dior"
+                },
+                {
+                  "key": "gender",
+                  "value": "MALE"
+                },
+                {
+                  "key": "minPrice",
+                  "value": "2000000"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "5000000"
+                },
+                {
+                  "key": "sillage",
+                  "value": "STRONG"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search with Pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/search?query=perfume&page=0&size=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "perfume"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Index Management",
+      "item": [
+        {
+          "name": "Reindex All Products",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/reindex",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "reindex"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
