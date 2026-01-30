@@ -60,6 +60,19 @@ src/main/java/com/demo/search/
 - Java 21 (JDK)
 - Docker & Docker Compose
 - Gradle hoặc Maven
+- IntelliJ IDEA (optional, nhưng khuyến nghị)
+
+### 🎯 Quick Start Guides
+
+**Chọn guide phù hợp với bạn:**
+
+| Guide | Thời gian | Dành cho |
+|-------|-----------|----------|
+| **[INTELLIJ_QUICK.md](INTELLIJ_QUICK.md)** | 3 phút | IntelliJ users - Nhanh nhất! |
+| **[INTELLIJ_SETUP.md](INTELLIJ_SETUP.md)** | 10 phút | IntelliJ users - Chi tiết |
+| **[START_HERE.md](START_HERE.md)** | 5 phút | Giải quyết lỗi setup |
+| **[DEMO_QUICK.md](DEMO_QUICK.md)** | 5 phút | Demo nhanh |
+| **[DEMO_GUIDE.md](DEMO_GUIDE.md)** | 15 phút | Demo chi tiết |
 
 ### Bước 1: Clone và Build Project
 
